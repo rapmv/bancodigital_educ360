@@ -3,6 +3,7 @@ package br.com.cdb.bancodigital.DTO;
 import java.io.Serializable;
 
 import br.com.cdb.bancodigital.entities.Cliente;
+import br.com.cdb.bancodigital.entities.Endereco;
 
 public class ClienteDTO implements Serializable {
 
@@ -13,15 +14,18 @@ public class ClienteDTO implements Serializable {
 	private String nome;
 	private String categoria;
 	
+	Endereco endereco;
+	
 	public ClienteDTO() {
 		
 	}
 
-	public ClienteDTO(Long id, String cpf, String nome, String categoria) {
+	public ClienteDTO(Long id, String cpf, String nome, String categoria, Endereco endereco) {
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.categoria = categoria;
+		this.endereco = endereco;
 	}
 	
 	public ClienteDTO(Cliente entity) {
@@ -29,6 +33,7 @@ public class ClienteDTO implements Serializable {
 		this.cpf = entity.getCpf();
 		this.nome = entity.getNome();
 		this.categoria = entity.getCategoria();
+		this.endereco = entity.getEndereco();
 	}
 
 	public Long getId() {
@@ -62,7 +67,12 @@ public class ClienteDTO implements Serializable {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	
-	
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 }

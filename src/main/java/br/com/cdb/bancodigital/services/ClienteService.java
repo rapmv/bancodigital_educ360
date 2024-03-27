@@ -1,17 +1,18 @@
 package br.com.cdb.bancodigital.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cdb.bancodigital.DTO.ClienteDTO;
 import br.com.cdb.bancodigital.entities.Cliente;
+import br.com.cdb.bancodigital.entities.Endereco;
 import br.com.cdb.bancodigital.repositories.ClienteRepository;
 import br.com.cdb.bancodigital.services.exceptions.DatabaseException;
 import br.com.cdb.bancodigital.services.exceptions.ResourceNotFoundException;
@@ -24,11 +25,11 @@ public class ClienteService {
 	private ClienteRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<ClienteDTO> findAll() {
+	public Page<ClienteDTO> findAllPaged(PageRequest pageRequest) {
 
-		List<Cliente> list = repository.findAll();
+		Page<Cliente> list = repository.findAll(pageRequest);
 
-		return list.stream().map(x -> new ClienteDTO(x)).collect(Collectors.toList());
+		return list.map(x -> new ClienteDTO(x));
 
 	}
 
@@ -46,9 +47,13 @@ public class ClienteService {
 	public ClienteDTO insert(ClienteDTO dto) {
 
 		Cliente entity = new Cliente();
+		Endereco endereco = new Endereco();
+		
 		entity.setCpf(dto.getCpf());
 		entity.setNome(dto.getNome());
 		entity.setCategoria(dto.getCategoria());
+		entity.setEndereco(null)
+		
 
 		entity = repository.save(entity);
 
@@ -74,15 +79,16 @@ public class ClienteService {
 		}
 	}
 
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
+		if(!repository.existsById(id)) {
+			throw new ResourceNotFoundException("Id não encontrado");
+		}
 		try {
 			repository.deleteById(id);
 		}
-		catch(EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Id não existe" + id);
-		}
 		catch(DataIntegrityViolationException e) {
-			throw new DatabaseException ("Violação de integridade");
+			throw new DatabaseException("Violação de integridade");
 		}
 	}
 	

@@ -3,6 +3,7 @@ package br.com.cdb.bancodigital.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,20 +23,25 @@ public class Cliente implements Serializable {
 	private String nome;
 	private String categoria;
 	
+	
 	/*
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dataNascimeto;
 	*/
 	
+	@Embedded
+	private Endereco endereco;
+	
 	public Cliente () {
 		
 	}
 
-	public Cliente(Long id, String cpf, String nome, String categoria) {
+	public Cliente(Long id, String cpf, String nome, String categoria, Endereco endereco) {
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.categoria = categoria;
+		this.endereco = endereco;
 	}
 
 	public Long getId() {
@@ -69,6 +75,14 @@ public class Cliente implements Serializable {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	public void getEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
+	public Endereco setEndereco(Endereco endereco) {
+		return endereco;
+	}
 
 	@Override
 	public int hashCode() {
@@ -86,7 +100,4 @@ public class Cliente implements Serializable {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
 }
