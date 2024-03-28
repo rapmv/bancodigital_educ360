@@ -1,8 +1,10 @@
 package br.com.cdb.bancodigital.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,12 +24,10 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String nome;
 	private String categoria;
-	
-	
-	/*
+
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant dataNascimeto;
-	*/
+	private Instant dataNascimento;
+	
 	
 	@Embedded
 	private Endereco endereco;
@@ -36,11 +36,12 @@ public class Cliente implements Serializable {
 		
 	}
 
-	public Cliente(Long id, String cpf, String nome, String categoria, Endereco endereco) {
+	public Cliente(Long id, String cpf, String nome, String categoria, Instant dataNascimento, Endereco endereco) {
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.categoria = categoria;
+		this.dataNascimento = dataNascimento;
 		this.endereco = endereco;
 	}
 
@@ -76,13 +77,22 @@ public class Cliente implements Serializable {
 		this.categoria = categoria;
 	}
 	
-	public void getEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public Instant getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Instant dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	
-	public Endereco setEndereco(Endereco endereco) {
+	public Endereco getEndereco() {
 		return endereco;
 	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 
 	@Override
 	public int hashCode() {

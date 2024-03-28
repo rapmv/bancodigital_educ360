@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cdb.bancodigital.DTO.ClienteDTO;
 import br.com.cdb.bancodigital.entities.Cliente;
-import br.com.cdb.bancodigital.entities.Endereco;
 import br.com.cdb.bancodigital.repositories.ClienteRepository;
 import br.com.cdb.bancodigital.services.exceptions.DatabaseException;
 import br.com.cdb.bancodigital.services.exceptions.ResourceNotFoundException;
@@ -47,13 +46,12 @@ public class ClienteService {
 	public ClienteDTO insert(ClienteDTO dto) {
 
 		Cliente entity = new Cliente();
-		Endereco endereco = new Endereco();
 		
 		entity.setCpf(dto.getCpf());
 		entity.setNome(dto.getNome());
 		entity.setCategoria(dto.getCategoria());
-		entity.setEndereco(null)
-		
+		entity.setDataNascimento(dto.getDataNascimento());
+		entity.setEndereco(dto.getEndereco());
 
 		entity = repository.save(entity);
 
@@ -69,7 +67,7 @@ public class ClienteService {
 			entity.setCpf(dto.getCpf());
 			entity.setNome(dto.getNome());
 			entity.setCategoria(dto.getCategoria());
-		
+			entity.setDataNascimento(dto.getDataNascimento());
 			entity = repository.save(entity);
 		
 			return new ClienteDTO(entity);
