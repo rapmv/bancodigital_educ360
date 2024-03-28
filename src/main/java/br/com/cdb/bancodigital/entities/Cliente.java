@@ -2,6 +2,8 @@ package br.com.cdb.bancodigital.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -10,6 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,7 +23,7 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long clienteId;
 	private String cpf;
 	private String nome;
 	private String categoria;
@@ -28,6 +31,9 @@ public class Cliente implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dataNascimento;
 	
+	@OneToMany(mappedBy = "listaCliente")
+	private List<Conta> listaContas = new ArrayList<>();
+
 	
 	@Embedded
 	private Endereco endereco;
@@ -35,9 +41,11 @@ public class Cliente implements Serializable {
 	public Cliente () {
 		
 	}
+	
+	
 
-	public Cliente(Long id, String cpf, String nome, String categoria, Instant dataNascimento, Endereco endereco) {
-		this.id = id;
+	public Cliente(Long clienteId, String cpf, String nome, String categoria, Instant dataNascimento, Endereco endereco) {
+		this.clienteId = clienteId;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.categoria = categoria;
@@ -46,11 +54,11 @@ public class Cliente implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		return clienteId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long clienteId) {
+		this.clienteId = clienteId;
 	}
 
 	public String getCpf() {
@@ -92,11 +100,18 @@ public class Cliente implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	public List<Conta> getListaContas() {
+		return listaContas;
+	}
 
+	public void setListaContas(List<Conta> listaContas) {
+		this.listaContas = listaContas;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(clienteId);
 	}
 
 	@Override
@@ -108,6 +123,6 @@ public class Cliente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(clienteId, other.clienteId);
 	}
 }

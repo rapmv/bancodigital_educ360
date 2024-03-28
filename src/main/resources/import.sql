@@ -1,9 +1,28 @@
-INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('111', 'Raphael', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-13T20:50:07.12345Z', 'SP', 'São Paulo', 'Rua 1', '100', 'Centro');
+INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('111', 'Raphael', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-13T10:00:00Z', 'SP', 'São Paulo', 'Rua 1', '100', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('222', 'Jorge', 'Super', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'RJ', 'Rio de Janeiro', 'Rua 2', '102A', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('333', 'Ana', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'SP', 'São Paulo', 'Rua 1', '100', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('444', 'Pedro', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'MG', 'Belo Horizonte', 'Rua 2', '111', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('555', 'Ana Cecilia', 'Super', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'RJ', 'Rio de Janeiro', 'Rua 10', '102B', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('666', 'Monica', 'Super', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'SP', 'São Paulo', 'Rua 3', '89B', 'Bairro A');
-INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('888', 'Moises', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'MG', 'Belo Horizonte', 'Rua 20', '001', 'Bairro B');
-INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('777', 'Renata', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'RJ', 'Rio de Janeiro', 'Rua 10', '102B', 'Centro');
+INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('777', 'Moises', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'MG', 'Belo Horizonte', 'Rua 20', '001', 'Bairro B');
+INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('888', 'Renata', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'RJ', 'Rio de Janeiro', 'Rua 10', '102B', 'Centro');
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('999', 'Neto', 'Premium', TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 'SP', 'São Paulo', 'Rua 5', '030A', 'Bairro D');
+
+
+
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Corrente', 2000, 1);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 1050, 2);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Corrente', 3000, 3);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Corrente', 800, 4);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 1200, 5);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 2000, 6);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 500, 7);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Corrente', 500, 8);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 1300, 9);
+INSERT INTO tb_conta(conta_Tipo, saldo, cliente_id) VALUES('Poupança', 1600, 1);
+
+INSERT INTO tb_cartao(cartao_tipo, cartao_status, cartao_senha, cartao_limite, cartao_limite_usado, cartao_data, conta_id) VALUES('Premium', 'Ativado', '111', 1000.0, 500, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 1);
+
+
+INSERT INTO tb_seguro (seguro_numero_apolice, seguro_condicoes, seguro_detalhes_cartao, seguro_valor_apolice, seguro_descricao, seguro_data_contrato, cartao_id)  VALUES (111, 'Seguro Condiçoes', 'Seguro Detalhes', 111.11, 'Seguro Descrição', TIMESTAMP '2020-07-14 10:00:00', 1);
+
