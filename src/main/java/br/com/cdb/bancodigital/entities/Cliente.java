@@ -1,12 +1,11 @@
 package br.com.cdb.bancodigital.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,8 +27,7 @@ public class Cliente implements Serializable {
 	private String nome;
 	private String categoria;
 
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant dataNascimento;
+	private LocalDate dataNascimento;
 	
 	@OneToMany(mappedBy = "listaCliente")
 	private List<Conta> listaContas = new ArrayList<>();
@@ -41,10 +39,8 @@ public class Cliente implements Serializable {
 	public Cliente () {
 		
 	}
-	
-	
 
-	public Cliente(Long clienteId, String cpf, String nome, String categoria, Instant dataNascimento, Endereco endereco) {
+	public Cliente(Long clienteId, String cpf, String nome, String categoria, LocalDate dataNascimento, Endereco endereco) {
 		this.clienteId = clienteId;
 		this.cpf = cpf;
 		this.nome = nome;
@@ -85,11 +81,11 @@ public class Cliente implements Serializable {
 		this.categoria = categoria;
 	}
 	
-	public Instant getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Instant dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 	

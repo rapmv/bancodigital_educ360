@@ -1,10 +1,9 @@
 package br.com.cdb.bancodigital.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Objects;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,8 +27,8 @@ public class Seguro implements Serializable {
 	private Double seguroValorApolice;
 	private String seguroDescricao;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant seguroDataContrato;
+	
+	private LocalDate seguroDataContrato;
 	
 	@OneToOne()
 	@JoinColumn(name="cartao_id")
@@ -40,7 +39,7 @@ public class Seguro implements Serializable {
 	}
 
 	public Seguro(Long seguroId, Long seguroNumeroApolice, String seguroCondicoes, String seguroDetalhesCartao,
-			Double seguroValorApolice, String seguroDescricao, Instant seguroDataContrato) {
+			Double seguroValorApolice, String seguroDescricao, LocalDate seguroDataContrato) {
 		super();
 		this.seguroId = seguroId;
 		this.seguroNumeroApolice = seguroNumeroApolice;
@@ -99,11 +98,11 @@ public class Seguro implements Serializable {
 		this.seguroDescricao = seguroDescricao;
 	}
 
-	public Instant getSeguroDataContrato() {
+	public LocalDate getSeguroDataContrato() {
 		return seguroDataContrato;
 	}
 
-	public void setSeguroDataContrato(Instant seguroDataContrato) {
+	public void setSeguroDataContrato(LocalDate seguroDataContrato) {
 		this.seguroDataContrato = seguroDataContrato;
 	}
 	

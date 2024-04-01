@@ -1,7 +1,7 @@
 package br.com.cdb.bancodigital.DTO;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 import br.com.cdb.bancodigital.entities.Cliente;
 import br.com.cdb.bancodigital.entities.Endereco;
@@ -17,7 +17,7 @@ public class ClienteDTO implements Serializable {
 	private String categoria;
 	
 	@PastOrPresent(message = "A data não pode ser futura!")
-	private Instant dataNascimento;
+	private LocalDate dataNascimento;
 	
 	Endereco endereco;
 	
@@ -25,7 +25,7 @@ public class ClienteDTO implements Serializable {
 		
 	}
 
-	public ClienteDTO(Long id, String cpf, String nome, String categoria, Instant dataNascimento, Endereco endereco) {
+	public ClienteDTO(Long id, String cpf, String nome, String categoria, LocalDate dataNascimento, Endereco endereco) {
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
@@ -75,11 +75,11 @@ public class ClienteDTO implements Serializable {
 		this.categoria = categoria;
 	}
 	
-	public Instant getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Instant dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

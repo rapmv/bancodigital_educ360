@@ -1,7 +1,7 @@
 package br.com.cdb.bancodigital.DTO;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 public class SeguroDTO implements Serializable {
 
@@ -14,14 +14,14 @@ public class SeguroDTO implements Serializable {
 	private Double seguroValorApolice;
 	private String seguroDescricao;
 	
-	private Instant seguroDataContrato;
+	private LocalDate seguroDataContrato;
 	
 	public SeguroDTO() {
 		
 	}
 
 	public SeguroDTO(Long seguroId, Long seguroNumeroApolice, String seguroCondicoes, String seguroDetalhesCartao,
-			Double seguroValorApolice, String seguroDescricao, Instant seguroDataContrato) {
+			Double seguroValorApolice, String seguroDescricao, LocalDate seguroDataContrato) {
 		super();
 		this.seguroId = seguroId;
 		this.seguroNumeroApolice = seguroNumeroApolice;
@@ -80,11 +80,11 @@ public class SeguroDTO implements Serializable {
 		this.seguroDescricao = seguroDescricao;
 	}
 
-	public Instant getSeguroDataContrato() {
+	public LocalDate getSeguroDataContrato() {
 		return seguroDataContrato;
 	}
 
-	public void setSeguroDataContrato(Instant seguroDataContrato) {
+	public void setSeguroDataContrato(LocalDate seguroDataContrato) {
 		this.seguroDataContrato = seguroDataContrato;
 	}
 	

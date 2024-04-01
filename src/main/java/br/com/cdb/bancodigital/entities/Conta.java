@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -16,6 +18,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tb_conta")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Conta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +27,7 @@ public class Conta implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long contaId;
 	private String contaTipo;
-	private Double saldo;
+	private Double contaSaldo;
 	
 	@ManyToOne()
 	@JoinColumn(name="cliente_id")
@@ -39,10 +42,12 @@ public class Conta implements Serializable {
 		
 	}
 
-	public Conta(Long contaId, String contaTipo, Double saldo) {
+	public Conta(Long contaId, String contaTipo, Double contaSaldo, Cliente listaCliente) {
 		this.contaId = contaId;
 		this.contaTipo = contaTipo;
-		this.saldo = saldo;
+		this.contaSaldo = contaSaldo;
+		this.listaCliente = listaCliente;
+
 	}
 
 	public Long getContaId() {
@@ -52,7 +57,7 @@ public class Conta implements Serializable {
 	public void setContaId(Long contaId) {
 		this.contaId = contaId;
 	}
-
+	
 	public String getContaTipo() {
 		return contaTipo;
 	}
@@ -61,12 +66,12 @@ public class Conta implements Serializable {
 		this.contaTipo = contaTipo;
 	}
 
-	public Double getSaldo() {
-		return saldo;
+	public Double getContaSaldo() {
+		return contaSaldo;
 	}
 
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
+	public void setContaSaldo(Double contaSaldo) {
+		this.contaSaldo = contaSaldo;
 	}
 
 	public Cliente getListaCliente() {
@@ -83,6 +88,10 @@ public class Conta implements Serializable {
 
 	public void setListaCartoes(List<Cartao> listaCartoes) {
 		this.listaCartoes = listaCartoes;
+	}
+	
+	public void calcularTaxa() {
+		
 	}
 
 	@Override
