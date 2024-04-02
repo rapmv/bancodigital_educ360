@@ -33,7 +33,7 @@ public class Cartao implements Serializable {
 	private Instant cartaoData;
 	
 	@ManyToOne()
-	@JoinColumn(name="conta_Id")
+	@JoinColumn(name="conta_Id", nullable=false)
 	private Conta listaConta;
 	
 	@OneToOne(mappedBy="listaCartao")

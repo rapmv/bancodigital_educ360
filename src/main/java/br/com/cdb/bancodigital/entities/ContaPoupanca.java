@@ -15,8 +15,8 @@ public class ContaPoupanca extends Conta{
 		super();
 	}
 
-	public ContaPoupanca(Double taxaRendimento, Long contaId, String contaTipo, Double contaSaldo) {
-		super(contaId, contaTipo, contaSaldo);
+	public ContaPoupanca(Double taxaRendimento, Long contaId, String contaTipo, Double contaSaldo, Cliente listaCliente) {
+		super(contaId, contaTipo, contaSaldo, listaCliente);
 		this.taxaRendimento = taxaRendimento;
 	}
 

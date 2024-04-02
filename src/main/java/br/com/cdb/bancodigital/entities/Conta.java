@@ -30,7 +30,7 @@ public class Conta implements Serializable {
 	private Double contaSaldo;
 	
 	@ManyToOne()
-	@JoinColumn(name="cliente_id")
+	@JoinColumn(name="cliente_id", nullable=false)
 	private Cliente listaCliente;
 	
 	

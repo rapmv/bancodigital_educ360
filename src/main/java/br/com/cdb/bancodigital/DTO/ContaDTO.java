@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cdb.bancodigital.entities.Cartao;
-import br.com.cdb.bancodigital.entities.Cliente;
 import br.com.cdb.bancodigital.entities.Conta;
 
 public class ContaDTO implements Serializable {
@@ -14,10 +13,8 @@ public class ContaDTO implements Serializable {
 	
 	private Long contaId;
 	private String contaTipo;
-	private Double contaSaldo;
 	
-	
-	private Cliente listaCliente;
+	private ClienteDTO listaCliente;
 	
 	private List<CartaoDTO> listaCartoes = new ArrayList<>();
 	
@@ -25,19 +22,16 @@ public class ContaDTO implements Serializable {
 		
 	}
 
-	public ContaDTO(Long contaId, String contaTipo, Double contaSaldo, Cliente listaCliente) {
+	public ContaDTO(Long contaId, String contaTipo, ClienteDTO listaCliente) {
 		this.contaId = contaId;
 		this.contaTipo = contaTipo;
-		this.contaSaldo = contaSaldo;
-		
+		this.listaCliente = listaCliente;
 	}
 
 	public ContaDTO(Conta entity) {
 		this.contaId = entity.getContaId();
 		this.contaTipo = entity.getContaTipo();
-		this.contaSaldo = entity.getContaSaldo();
-		this.listaCliente = entity.getListaCliente();
-	
+		this.listaCliente = new ClienteDTO(entity.getListaCliente());
 	}
 	
 	public ContaDTO(Conta entity, List<Cartao> listaCartoes) {
@@ -61,19 +55,11 @@ public class ContaDTO implements Serializable {
 		this.contaTipo = contaTipo;
 	}
 
-	public Double getContaSaldo() {
-		return contaSaldo;
-	}
-
-	public void setContaSaldo(Double contaSaldo) {
-		this.contaSaldo = contaSaldo;
-	}
-
-	public Cliente getListaCliente() {
+	public ClienteDTO getListaCliente() {
 		return listaCliente;
 	}
 
-	public void setListaCliente(Cliente listaCliente) {
+	public void setListaCliente(ClienteDTO listaCliente) {
 		this.listaCliente = listaCliente;
 	}
 

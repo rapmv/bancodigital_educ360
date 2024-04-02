@@ -9,17 +9,16 @@ INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, r
 INSERT INTO tb_cliente (cpf, nome, categoria, data_Nascimento, estado, cidade, rua, numero, logradouro) VALUES ('999', 'Neto', 'Premium', '2020-07-14', 'SP', 'São Paulo', 'Rua 5', '030A', 'Bairro D');
 
 
-
 INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 2000, 1);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança',1050, 2);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente',3000, 3);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente',800, 4);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança',1200, 5);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança',2000, 6);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente',500, 7);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança',500, 8);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente',1300, 9);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança',1600, 1);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 1050, 2);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 3000, 3);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 0800, 4);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 1200, 5);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 2000, 6);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 0500, 7);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 0700, 8);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 1300, 9);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 1600, 1);
 
 
 INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(5, 1);
