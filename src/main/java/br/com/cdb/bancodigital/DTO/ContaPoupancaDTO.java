@@ -12,13 +12,13 @@ public class ContaPoupancaDTO extends ContaDTO {
 		
 	}
 	
-	public ContaPoupancaDTO(Double taxaRendimento, Long contaId, String contaTipo, ClienteDTO listaCliente) {
-		super(contaId, contaTipo, listaCliente);
+	public ContaPoupancaDTO(Double taxaRendimento, Long contaId, String contaTipo, ClienteContaDTO clienteConta) {
+		super(contaId, contaTipo, clienteConta);
 		this.taxaRendimento = taxaRendimento;
 	}
 	
 	public ContaPoupancaDTO(ContaPoupanca entity) {
-		super(entity.getContaId(), entity.getContaTipo(), new ClienteDTO(entity.getListaCliente()));
+		super(entity.getContaId(), entity.getContaTipo(), new ClienteContaDTO(entity.getClienteConta()));
 		this.taxaRendimento = entity.getTaxaRendimento();
 	}
 

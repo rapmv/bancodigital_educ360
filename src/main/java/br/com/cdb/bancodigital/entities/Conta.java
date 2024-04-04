@@ -30,8 +30,8 @@ public class Conta implements Serializable {
 	private Double contaSaldo;
 	
 	@ManyToOne()
-	@JoinColumn(name="cliente_id", nullable=false)
-	private Cliente listaCliente;
+	@JoinColumn(name="cliente_id")
+	private Cliente clienteConta;
 	
 	
 	@OneToMany(mappedBy="listaConta")
@@ -42,11 +42,11 @@ public class Conta implements Serializable {
 		
 	}
 
-	public Conta(Long contaId, String contaTipo, Double contaSaldo, Cliente listaCliente) {
+	public Conta(Long contaId, String contaTipo, Double contaSaldo, Cliente clienteConta) {
 		this.contaId = contaId;
 		this.contaTipo = contaTipo;
 		this.contaSaldo = contaSaldo;
-		this.listaCliente = listaCliente;
+		this.clienteConta = clienteConta;
 
 	}
 
@@ -74,12 +74,12 @@ public class Conta implements Serializable {
 		this.contaSaldo = contaSaldo;
 	}
 
-	public Cliente getListaCliente() {
-		return listaCliente;
+	public Cliente getClienteConta() {
+		return clienteConta;
 	}
 
-	public void setListaCliente(Cliente cliente) {
-		this.listaCliente = cliente;
+	public void setClienteConta(Cliente clienteConta) {
+		this.clienteConta = clienteConta;
 	}
 	
 	public List<Cartao> getListaCartoes() {

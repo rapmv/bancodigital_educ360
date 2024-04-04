@@ -29,7 +29,7 @@ public class Cliente implements Serializable {
 
 	private LocalDate dataNascimento;
 	
-	@OneToMany(mappedBy = "listaCliente")
+	@OneToMany(mappedBy = "clienteConta")
 	private List<Conta> listaContas = new ArrayList<>();
 
 	

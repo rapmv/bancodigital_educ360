@@ -15,8 +15,8 @@ public class ContaCorrente extends Conta{
 		super();
 	}
 	
-	public ContaCorrente(Double taxaMensal, Long contaId, String contaTipo, Double contaSaldo, Cliente listaCliente) {
-		super(contaId, contaTipo, contaSaldo, listaCliente);
+	public ContaCorrente(Double taxaMensal, Long contaId, String contaTipo, Double contaSaldo, Cliente clienteConta) {
+		super(contaId, contaTipo, contaSaldo, clienteConta);
 		this.taxaMensal = taxaMensal;
 	}
 
@@ -27,7 +27,5 @@ public class ContaCorrente extends Conta{
 	public void setTaxaMensal(Double taxaMensal) {
 		this.taxaMensal = taxaMensal;
 	}
-	
-	
 
 }

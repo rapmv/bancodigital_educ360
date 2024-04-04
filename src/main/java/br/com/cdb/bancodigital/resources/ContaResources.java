@@ -24,7 +24,7 @@ public class ContaResources {
 	public ResponseEntity<Page<ContaDTO>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "3") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "contaTipo") String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "contaID") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction
 			){
 		

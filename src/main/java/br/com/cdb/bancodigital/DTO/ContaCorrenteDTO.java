@@ -1,8 +1,5 @@
 package br.com.cdb.bancodigital.DTO;
 
-import java.util.List;
-
-import br.com.cdb.bancodigital.entities.Cartao;
 import br.com.cdb.bancodigital.entities.ContaCorrente;
 
 public class ContaCorrenteDTO extends ContaDTO {
@@ -12,27 +9,19 @@ public class ContaCorrenteDTO extends ContaDTO {
 	private Double taxaMensal;
 	
 	public ContaCorrenteDTO() {
-		
+		super();
 	}
 	
-	public ContaCorrenteDTO(Double taxaMensal, Long contaId, String contaTipo, ClienteDTO listaCliente) {
-		super(contaId, contaTipo, listaCliente);
+	public ContaCorrenteDTO(Double taxaMensal, Long contaId, String contaTipo, Double contaSaldo, ClienteDTO clienteConta) {
+		super(contaId, contaTipo, contaSaldo, clienteConta);
 		this.taxaMensal = taxaMensal;
 	}
 	
 	public ContaCorrenteDTO(ContaCorrente entity) {
-		super(entity.getContaId(), entity.getContaTipo(), new ClienteDTO(entity.getListaCliente()));
+		super(entity);
+		//super(entity.getContaId(), entity.getContaTipo(), entity.getContaSaldo(), new ClienteDTO(entity.getClienteConta()));
 		this.taxaMensal = entity.getTaxaMensal();
 	}
-	
-	
-	/*
-	public ContaCorrenteDTO(ContaCorrente entity, List<Cartao> listaCartoes) {
-		this(entity);
-		listaCartoes.forEach(cart->this.listaCartoes.add(new CartaoDTO(cart)));
-	}
-	*/
-
 
 	public Double getTaxaMensal() {
 		return taxaMensal;

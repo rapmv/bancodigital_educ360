@@ -17,11 +17,15 @@ INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 12
 INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 2000, 6);
 INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 0500, 7);
 INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 0700, 8);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 1300, 9);
-INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 1600, 1);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Corrente', 1300, 3);
+INSERT INTO tb_conta(conta_tipo, conta_saldo, cliente_id) VALUES('Poupança', 1600, 2);
 
 
-INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(5, 1);
+INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(11, 1);
+INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(12, 3);
+INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(13, 4);
+INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(14, 7);
+INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(15, 9);
 
 INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(10, 2);
 

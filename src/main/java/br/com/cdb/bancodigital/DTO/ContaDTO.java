@@ -13,32 +13,38 @@ public class ContaDTO implements Serializable {
 	
 	private Long contaId;
 	private String contaTipo;
+	private Double contaSaldo;
 	
-	private ClienteDTO listaCliente;
+	private ClienteDTO clienteConta = new ClienteDTO();
 	
 	private List<CartaoDTO> listaCartoes = new ArrayList<>();
 	
 	public ContaDTO() {
 		
 	}
-
-	public ContaDTO(Long contaId, String contaTipo, ClienteDTO listaCliente) {
+	
+	public ContaDTO(Long contaId, String contaTipo, Double contaSaldo, ClienteDTO clienteConta) {
 		this.contaId = contaId;
 		this.contaTipo = contaTipo;
-		this.listaCliente = listaCliente;
+		this.contaSaldo = contaSaldo;
+		this.clienteConta = clienteConta;
 	}
+	
 
 	public ContaDTO(Conta entity) {
 		this.contaId = entity.getContaId();
 		this.contaTipo = entity.getContaTipo();
-		this.listaCliente = new ClienteDTO(entity.getListaCliente());
+		this.contaSaldo = entity.getContaSaldo();
+		this.clienteConta = new ClienteDTO(entity.getClienteConta());
 	}
+	
 	
 	public ContaDTO(Conta entity, List<Cartao> listaCartoes) {
 		this(entity);
 		listaCartoes.forEach(cart->this.listaCartoes.add(new CartaoDTO(cart)));	
 	}
-
+	
+	
 	public Long getContaId() {
 		return contaId;
 	}
@@ -55,12 +61,20 @@ public class ContaDTO implements Serializable {
 		this.contaTipo = contaTipo;
 	}
 
-	public ClienteDTO getListaCliente() {
-		return listaCliente;
+	public ClienteDTO getClienteConta() {
+		return clienteConta;
 	}
 
-	public void setListaCliente(ClienteDTO listaCliente) {
-		this.listaCliente = listaCliente;
+	public void setClienteConta(ClienteDTO clienteConta) {
+		this.clienteConta = clienteConta;
+	}
+
+	public Double getContaSaldo() {
+		return contaSaldo;
+	}
+
+	public void setContaSaldo(Double contaSaldo) {
+		this.contaSaldo = contaSaldo;
 	}
 
 	public List<CartaoDTO> getListaCartoes() {
