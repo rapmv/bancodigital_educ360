@@ -23,7 +23,7 @@ import br.com.cdb.bancodigital.DTO.ContaPoupancaDTO;
 import br.com.cdb.bancodigital.services.ContaPoupancaService;
 
 @RestController
-@RequestMapping(value= "/contapoupancas")
+@RequestMapping(value= "/contaspoupanca")
 public class ContaPoupancaResources {
 	
 	@Autowired

@@ -27,7 +27,11 @@ INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(13, 4);
 INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(14, 7);
 INSERT INTO tb_conta_corrente(taxa_mensal, conta_id) VALUES(15, 9);
 
-INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(10, 2);
+INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(16, 2);
+INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(17, 5);
+INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(18, 6);
+INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(19, 8);
+INSERT INTO tb_conta_poupanca(taxa_rendimento, conta_id) VALUES(20, 10);
 
 
 INSERT INTO tb_cartao(cartao_tipo, cartao_status, cartao_senha, cartao_limite, cartao_limite_usado, cartao_data, conta_id) VALUES('Premium', 'Ativado', '111', 1000.0, 500, TIMESTAMP WITH TIME ZONE '2020-07-14T10:00:00Z', 1);

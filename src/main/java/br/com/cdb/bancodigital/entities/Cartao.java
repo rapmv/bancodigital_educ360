@@ -34,9 +34,9 @@ public class Cartao implements Serializable {
 	
 	@ManyToOne()
 	@JoinColumn(name="conta_Id")
-	private Conta listaConta;
+	private Conta contaCartao;
 	
-	@OneToOne(mappedBy="listaCartao")
+	@OneToOne(mappedBy="cartaoSeguro")
 	private Seguro seguro;
 	
 	
@@ -113,12 +113,12 @@ public class Cartao implements Serializable {
 		this.cartaoData = cartaoData;
 	}
 
-	public Conta getListaConta() {
-		return listaConta;
+	public Conta getContaCartao() {
+		return contaCartao;
 	}
 
-	public void setListaConta(Conta listaConta) {
-		this.listaConta = listaConta;
+	public void setContaCartao(Conta contaCartao) {
+		this.contaCartao = contaCartao;
 	}
 
 	@Override

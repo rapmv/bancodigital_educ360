@@ -49,7 +49,7 @@ public class CartaoDTO implements Serializable {
 			this.cartaoLimiteUsado = entity.getCartaoLimiteUsado();
 			this.cartaoData = entity.getCartaoData();
 			
-			this.contaCartao = new ContaDTO(entity.getListaConta());
+			this.contaCartao = new ContaDTO(entity.getContaCartao());
 		}
 		
 		/*

@@ -32,7 +32,7 @@ public class Seguro implements Serializable {
 	
 	@OneToOne()
 	@JoinColumn(name="cartao_id")
-	private Cartao listaCartao;
+	private Cartao cartaoSeguro;
 	
 	public Seguro() {
 		
@@ -106,12 +106,12 @@ public class Seguro implements Serializable {
 		this.seguroDataContrato = seguroDataContrato;
 	}
 	
-	public Cartao getListaCartao() {
-		return listaCartao;
+	public Cartao getCartaoSeguro() {
+		return cartaoSeguro;
 	}
 
-	public void setCartao(Cartao listaCartao) {
-		this.listaCartao = listaCartao;
+	public void setCartaoSeguro(Cartao cartaoSeguro) {
+		this.cartaoSeguro = cartaoSeguro;
 	}
 
 	@Override

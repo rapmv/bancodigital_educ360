@@ -34,7 +34,7 @@ public class Conta implements Serializable {
 	private Cliente clienteConta;
 	
 	
-	@OneToMany(mappedBy="listaConta")
+	@OneToMany(mappedBy="contaCartao")
 	private List<Cartao> listaCartoes = new ArrayList<>();
 	
 	
