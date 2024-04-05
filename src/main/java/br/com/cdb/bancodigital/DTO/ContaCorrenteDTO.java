@@ -19,7 +19,6 @@ public class ContaCorrenteDTO extends ContaDTO {
 	
 	public ContaCorrenteDTO(ContaCorrente entity) {
 		super(entity);
-		//super(entity.getContaId(), entity.getContaTipo(), entity.getContaSaldo(), new ClienteDTO(entity.getClienteConta()));
 		this.taxaMensal = entity.getTaxaMensal();
 	}
 

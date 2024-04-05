@@ -2,8 +2,11 @@ package br.com.cdb.bancodigital.DTO;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cdb.bancodigital.entities.Cliente;
+import br.com.cdb.bancodigital.entities.Conta;
 import br.com.cdb.bancodigital.entities.Endereco;
 import jakarta.validation.constraints.PastOrPresent;
 
@@ -20,6 +23,8 @@ public class ClienteDTO implements Serializable {
 	private LocalDate dataNascimento;
 	
 	Endereco endereco;
+	
+	private List<ContaDTO> listaContas = new ArrayList();
 	
 	public ClienteDTO() {
 		
@@ -41,6 +46,13 @@ public class ClienteDTO implements Serializable {
 		this.categoria = entity.getCategoria();
 		this.dataNascimento = entity.getDataNascimento();
 		this.endereco = entity.getEndereco();
+	}
+	
+	public ClienteDTO(Cliente entity, List<Conta> listaConta) {
+		this(entity);
+		
+		listaConta.forEach(list -> this.listaContas.add(new ContaDTO(list)));
+		
 	}
 
 	public Long getId() {
@@ -90,4 +102,13 @@ public class ClienteDTO implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public List<ContaDTO> getListaContas() {
+		return listaContas;
+	}
+
+	public void setListaContas(List<ContaDTO> listaContas) {
+		this.listaContas = listaContas;
+	}
+	
 }

@@ -9,16 +9,16 @@ public class ContaPoupancaDTO extends ContaDTO {
 	private Double taxaRendimento;
 	
 	public ContaPoupancaDTO() {
-		
+		super();
 	}
 	
-	public ContaPoupancaDTO(Double taxaRendimento, Long contaId, String contaTipo, ClienteContaDTO clienteConta) {
-		super(contaId, contaTipo, clienteConta);
+	public ContaPoupancaDTO(Double taxaMensal, Long contaId, String contaTipo, Double contaSaldo, ClienteDTO clienteConta) {
+		super(contaId, contaTipo, contaSaldo, clienteConta);
 		this.taxaRendimento = taxaRendimento;
 	}
 	
 	public ContaPoupancaDTO(ContaPoupanca entity) {
-		super(entity.getContaId(), entity.getContaTipo(), new ClienteContaDTO(entity.getClienteConta()));
+		super(entity);
 		this.taxaRendimento = entity.getTaxaRendimento();
 	}
 

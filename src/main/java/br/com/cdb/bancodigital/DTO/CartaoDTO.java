@@ -19,13 +19,16 @@ public class CartaoDTO implements Serializable {
 		
 		private Instant cartaoData;
 		
+		private ContaDTO contaCartao = new ContaDTO();
+		
 		private Seguro seguro;
 		
 		public CartaoDTO() {
 			
 		}
 
-		public CartaoDTO(Long cartaoId, String cartaoTipo, String cartaoStatus, String cartaoSenha, Double cartaoLimite, Double cartaoLimiteUsado, Instant cartaoData) {
+		public CartaoDTO(Long cartaoId, String cartaoTipo, String cartaoStatus, String cartaoSenha, 
+				Double cartaoLimite, Double cartaoLimiteUsado, Instant cartaoData, ContaDTO contaCartao) {
 			this.cartaoId = cartaoId;
 			this.cartaoTipo = cartaoTipo;
 			this.cartaoStatus = cartaoStatus;
@@ -33,6 +36,8 @@ public class CartaoDTO implements Serializable {
 			this.cartaoLimite = cartaoLimite;
 			this.cartaoLimiteUsado = cartaoLimiteUsado;
 			this.cartaoData = cartaoData;
+			
+			this.contaCartao = contaCartao;
 		}
 		
 		public CartaoDTO(Cartao entity) {
@@ -43,13 +48,17 @@ public class CartaoDTO implements Serializable {
 			this.cartaoLimite = entity.getCartaoLimite();
 			this.cartaoLimiteUsado = entity.getCartaoLimiteUsado();
 			this.cartaoData = entity.getCartaoData();
+			
+			this.contaCartao = new ContaDTO(entity.getListaConta());
 		}
 		
+		/*
 		public CartaoDTO(Cartao entity, Seguro seguro) {
 			this(entity);
 			this.seguro = seguro;
 		}
-
+		*/
+		
 		public Long getCartaoId() {
 			return cartaoId;
 		}
@@ -106,6 +115,14 @@ public class CartaoDTO implements Serializable {
 			this.cartaoData = cartaoData;
 		}
 
+		public ContaDTO getContaCartao() {
+			return contaCartao;
+		}
+
+		public void setContaCartao(ContaDTO contaCartao) {
+			this.contaCartao = contaCartao;
+		}
+
 		public Seguro getSeguro() {
 			return seguro;
 		}
@@ -114,5 +131,4 @@ public class CartaoDTO implements Serializable {
 			this.seguro = seguro;
 		}
 
-		
 }

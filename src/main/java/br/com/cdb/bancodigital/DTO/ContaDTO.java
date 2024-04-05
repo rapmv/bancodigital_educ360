@@ -27,11 +27,13 @@ public class ContaDTO implements Serializable {
 		this.contaId = contaId;
 		this.contaTipo = contaTipo;
 		this.contaSaldo = contaSaldo;
+		
 		this.clienteConta = clienteConta;
 	}
 	
 
 	public ContaDTO(Conta entity) {
+		
 		this.contaId = entity.getContaId();
 		this.contaTipo = entity.getContaTipo();
 		this.contaSaldo = entity.getContaSaldo();

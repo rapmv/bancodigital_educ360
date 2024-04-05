@@ -11,8 +11,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cdb.bancodigital.DTO.ClienteDTO;
+import br.com.cdb.bancodigital.DTO.ContaDTO;
 import br.com.cdb.bancodigital.entities.Cliente;
+import br.com.cdb.bancodigital.entities.Conta;
+import br.com.cdb.bancodigital.entities.Endereco;
 import br.com.cdb.bancodigital.repositories.ClienteRepository;
+import br.com.cdb.bancodigital.repositories.ContaRepository;
 import br.com.cdb.bancodigital.services.exceptions.DatabaseException;
 import br.com.cdb.bancodigital.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,6 +26,9 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository repository;
+	
+	@Autowired
+	private ContaRepository contaRepository;
 
 	@Transactional(readOnly = true)
 	public Page<ClienteDTO> findAllPaged(PageRequest pageRequest) {
@@ -39,7 +46,7 @@ public class ClienteService {
 
 		Cliente entity = obj.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado"));
 
-		return new ClienteDTO(entity);
+		return new ClienteDTO(entity, entity.getListaContas());
 	}
 
 	@Transactional
@@ -47,12 +54,8 @@ public class ClienteService {
 
 		Cliente entity = new Cliente();
 		
-		entity.setCpf(dto.getCpf());
-		entity.setNome(dto.getNome());
-		entity.setCategoria(dto.getCategoria());
-		entity.setDataNascimento(dto.getDataNascimento());
-		entity.setEndereco(dto.getEndereco());
-
+		clienteEntity(dto, entity);
+		
 		entity = repository.save(entity);
 
 		return new ClienteDTO(entity);
@@ -64,10 +67,8 @@ public class ClienteService {
 		try {
 			Cliente entity = repository.getReferenceById(id);
 		
-			entity.setCpf(dto.getCpf());
-			entity.setNome(dto.getNome());
-			entity.setCategoria(dto.getCategoria());
-			entity.setDataNascimento(dto.getDataNascimento());
+			clienteEntity(dto, entity);
+			
 			entity = repository.save(entity);
 		
 			return new ClienteDTO(entity);
@@ -90,4 +91,29 @@ public class ClienteService {
 		}
 	}
 	
+	private void clienteEntity(ClienteDTO dto, Cliente entity) {
+		
+		entity.setCpf(dto.getCpf());
+		entity.setNome(dto.getNome());
+		entity.setCategoria(dto.getCategoria());
+		entity.setDataNascimento(dto.getDataNascimento());
+		
+		Endereco endereco = new Endereco();
+		
+		endereco.setEstado(dto.getEndereco().getEstado());
+		endereco.setCidade(dto.getEndereco().getCidade());
+		endereco.setRua(dto.getEndereco().getRua());
+		endereco.setNumero(dto.getEndereco().getNumero());
+		endereco.setLogradouro(dto.getEndereco().getLogradouro());
+		 
+		entity.setEndereco(endereco); 
+		
+		
+		entity.getListaContas().clear();
+		for(ContaDTO cliDTO : dto.getListaContas()) {
+			Conta contaCliente = contaRepository.getReferenceById(cliDTO.getContaId());
+			entity.getListaContas().add(contaCliente);
+		}
+		
+	}
 }

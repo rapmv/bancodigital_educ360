@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.cdb.bancodigital.DTO.ClienteDTO;
 import br.com.cdb.bancodigital.DTO.ContaCorrenteDTO;
 import br.com.cdb.bancodigital.entities.Cliente;
 import br.com.cdb.bancodigital.entities.ContaCorrente;
@@ -49,21 +48,7 @@ public class ContaCorrenteService {
 
 		ContaCorrente entity = new ContaCorrente();
 		
-		entity.setContaTipo(dto.getContaTipo());
-		entity.setContaSaldo(dto.getContaSaldo());
-		entity.setTaxaMensal(dto.getTaxaMensal());
-		
-		Cliente cliente = new Cliente();
-		
-		cliente.setId(dto.getClienteConta().getId());
-		
-	    cliente.setCpf(dto.getClienteConta().getCpf());
-	    cliente.setNome(dto.getClienteConta().getNome());
-	    cliente.setCategoria(dto.getClienteConta().getCategoria());
-	    cliente.setDataNascimento(dto.getClienteConta().getDataNascimento());
-	    cliente.setEndereco(dto.getClienteConta().getEndereco());
-	    
-	    entity.setClienteConta(cliente);
+		contaEntity(dto, entity);
 
 	    entity = repository.save(entity);
 
@@ -100,6 +85,25 @@ public class ContaCorrenteService {
 		catch(DataIntegrityViolationException e) {
 			throw new DatabaseException("Violação de integridade");
 		}
+	}
+	
+	private void contaEntity(ContaCorrenteDTO dto, ContaCorrente entity) {
+		
+		entity.setContaTipo(dto.getContaTipo());
+		entity.setContaSaldo(dto.getContaSaldo());
+		entity.setTaxaMensal(dto.getTaxaMensal());
+		
+		Cliente cliente = new Cliente();
+		
+		cliente.setId(dto.getClienteConta().getId());
+		
+	    cliente.setCpf(dto.getClienteConta().getCpf());
+	    cliente.setNome(dto.getClienteConta().getNome());
+	    cliente.setCategoria(dto.getClienteConta().getCategoria());
+	    cliente.setDataNascimento(dto.getClienteConta().getDataNascimento());
+	    cliente.setEndereco(dto.getClienteConta().getEndereco());
+	    
+	    entity.setClienteConta(cliente);
 	}
 
 }
